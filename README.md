@@ -75,7 +75,7 @@ LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"喵了个咪" customVi
 [alert show];
 ```
 
-##### 为快速开发，可将提示框定义为全局红，如
+##### 为快速开发，可将提示框定义为全局宏，如
 
 ### 宏定义大致如
 ```objc
