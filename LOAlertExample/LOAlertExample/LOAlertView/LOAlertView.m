@@ -257,17 +257,26 @@
     
     NSInteger buttonView_height = 0;
     NSInteger count = self.buttonView.subviews.count;
+    //按钮高度
+    NSInteger btn_height = 36;
+    //按钮宽度
     NSInteger btn_width = (self.contentWidth-(Margin*2)-((count-1)*BtnSpacing))/count;
-    NSInteger btn_height = 40;
-    for (NSInteger i=0; i<self.buttonView.subviews.count; i++) {
+    if (count==1 && self.buttonTotalWidth < self.contentWidth-Margin*2){
+        btn_width = self.buttonTotalWidth<92?92:self.buttonTotalWidth;
+    }
+    
+    for (NSInteger i=0; i<count; i++) {
         UIButton *btn = (UIButton *)[self.buttonView.subviews objectAtIndex:i];
         if (self.buttonTotalWidth>self.contentWidth || self.buttonCenterX) {
             NSInteger spacing_top = 16;
             NSInteger btn_y = (btn_height+spacing_top)*i;
             btn.frame = CGRectMake(Margin,btn_y, self.contentWidth-Margin*2, btn_height);
-        }else
-        {
-            btn.frame = CGRectMake(Margin+(btn_width+BtnSpacing)*i, 0, btn_width, btn_height);
+        }else{
+            CGFloat btn_x = Margin+(btn_width+BtnSpacing)*i;
+            if (count==1){//只有一个按钮时，居中
+                btn_x = (self.contentWidth-btn_width)/2;
+            }
+            btn.frame = CGRectMake(btn_x, 0, btn_width, btn_height);
         }
         
         if (btn.tag == -1) {
@@ -341,7 +350,7 @@
     self.buttonView.frame = CGRectMake(0, btnViewY, self.contentWidth, self.buttonView.frame.size.height);
     
     if(self.buttonView.subviews.count>0){
-        self.contentView.frame = CGRectMake(0, 0, self.contentWidth, self.buttonView.frame.origin.y+self.buttonView.frame.size.height+10);
+        self.contentView.frame = CGRectMake(0, 0, self.contentWidth, self.buttonView.frame.origin.y+self.buttonView.frame.size.height+Margin);
     }else{
         self.contentView.frame = CGRectMake(0, 0, self.contentWidth, self.buttonView.frame.origin.y+self.buttonView.frame.size.height);
     }
