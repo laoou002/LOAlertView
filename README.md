@@ -8,12 +8,12 @@
 
 ### 使用方法：
 ```objc
-    LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"提示" message:@"我是一个普通的提示框" completion:^(BOOL cancelled, NSInteger buttonIndex) {
-        if (cancelled){
-            NSLog(@"点击了取消");
-        }
-    } cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-    [alert show];
+LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"提示" message:@"我是一个普通的提示框" completion:^(BOOL cancelled, NSInteger buttonIndex) {
+    if (cancelled){
+        NSLog(@"点击了取消");
+    }
+} cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+[alert show];
 ```
 
 ##### 这是一个无标题提示框
@@ -22,8 +22,8 @@
 
 ### 使用方法：
 ```objc
-    LOAlertView *alert = [[LOAlertView alloc] initWithTitle:nil message:@"我是一个无标题的提示框" completion:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
-    [alert show];
+LOAlertView *alert = [[LOAlertView alloc] initWithTitle:nil message:@"我是一个无标题的提示框" completion:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
+[alert show];
 ```
 
 ##### 自动消失的短暂提示
@@ -32,9 +32,9 @@
 
 ### 使用方法：
 ```objc
-    LOAlertView *alert = [[LOAlertView alloc] initWithTitle:nil message:@"我自动消失" completion:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
-    alert.delay = 2;
-    [alert show];
+LOAlertView *alert = [[LOAlertView alloc] initWithTitle:nil message:@"我自动消失" completion:nil cancelButtonTitle:nil otherButtonTitles:nil, nil];
+alert.delay = 2;
+[alert show];
 ```
 
 
@@ -44,22 +44,22 @@
 
 ### 使用方法：
 ```objc
-    LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"买单" message:@"请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?" completion:^(BOOL cancelled, NSInteger buttonIndex) {
-        if (!cancelled){
-            switch (buttonIndex) {
-                case 0:
-                    [sender setTitle:@"刷卡" forState:UIControlStateNormal];
-                break;
-                case 1:
-                    [sender setTitle:@"现金" forState:UIControlStateNormal];
-                break;
-                default:
-                    [sender setTitle:@"支付宝" forState:UIControlStateNormal];
-                break;
-            }
+LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"买单" message:@"请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?请问是刷卡还是现金?" completion:^(BOOL cancelled, NSInteger buttonIndex) {
+    if (!cancelled){
+        switch (buttonIndex) {
+            case 0:
+                [sender setTitle:@"刷卡" forState:UIControlStateNormal];
+            break;
+            case 1:
+                [sender setTitle:@"现金" forState:UIControlStateNormal];
+            break;
+            default:
+                [sender setTitle:@"支付宝" forState:UIControlStateNormal];
+            break;
         }
-    } cancelButtonTitle:@"再等等" otherButtonTitles:@"刷卡",@"现金",@"支付宝", nil];
-    [alert show];
+    }
+} cancelButtonTitle:@"再等等" otherButtonTitles:@"刷卡",@"现金",@"支付宝", nil];
+[alert show];
 ```
 
 ##### 自定义内容视图,customView可为UIView、UITextField、UIImageView等
@@ -68,11 +68,11 @@
 
 ### 使用方法：
 ```objc
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140, 140)];
-    imageView.image = [UIImage imageNamed:@"logo"];
+UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 140, 140)];
+imageView.image = [UIImage imageNamed:@"logo"];
             
-    LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"喵了个咪" customView:imageView completion:nil cancelButtonTitle:nil otherButtonTitles:@"ok", nil];
-    [alert show];
+LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"喵了个咪" customView:imageView completion:nil cancelButtonTitle:nil otherButtonTitles:@"ok", nil];
+[alert show];
 ```
 
 ##### 为快速开发，可将提示框定义为全局红，如
@@ -87,5 +87,5 @@ LOAlertView *alert = [[LOAlertView alloc] initWithTitle:@"提示" message:msg co
 
 ### 使用方法：
 ```objc
-    ALERT(@"请输入用户名!")
+ALERT(@"请输入用户名!")
 ```
